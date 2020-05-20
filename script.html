@@ -1,0 +1,80 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title></title>
+</head>
+<body>
+    <script>
+        function computerPlay(){
+            let solution;
+            let number = Math.floor((Math.random()*3)+1);
+            if(number == 1) {
+                solution = "scissors";
+            } else if (number == 2) {
+                solution = "rock";
+            } else if (number == 3) {
+                solution = "paper"; 
+            }
+            console.log("Computer chose " + solution + ".");
+            return solution;
+        }
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+            if (playerSelection == computerSelection) {
+                return ("Draw! Play again!");
+            } else if ((playerSelection == "rock")&&(computerSelection == "scissors")){
+                return ("You win! Rock beats Scissors!");
+            } else if ((playerSelection == "scissors")&&(computerSelection == "paper")){
+                return ("You win! Scissors beats Paper!");
+            } else if ((playerSelection == "paper")&&(computerSelection == "rock")){
+                return ("You win! Paper beats Rock!"); 
+            } else if ((computerSelection == "rock")&&(playerSelection == "scissors")){
+                return ("You Lose! Rock beats Scissors!");
+            } else if ((computerSelection == "scissors")&&(playerSelection == "paper")){
+                return ("You Lose! Scissors beats Paper!");
+            } else if ((computerSelection == "paper")&&(playerSelection == "rock")){
+                return ("You Lose! Paper beats Rock!"); 
+            } else {
+                return ("Uh Oh, something went wrong!");
+            }/*
+            switch(playerSelection, computerSelection){
+                case "rock", "scissors": 
+                    return ("You Win! Rock beats Scissors!"); 
+                break;
+                case "scissors", "paper": 
+                    return ("You Win! Scissors beats Paper!");
+                break;
+                case "paper", "rock": 
+                    return ("You Win! Paper beats Rock!"); 
+                break;
+                case "rock", "scissors": 
+                    return ("You Lose! Rock beats Scissors!");
+                break;
+                case "scissors", "paper": 
+                    return ("You Lose! Scissors beats Paper!");
+                break;
+                case "paper", "rock": 
+                    return ("You Lose! Paper beats Rock!");
+                break;
+                default:
+                    return ("Draw! Play again!");
+                break;
+            }*/
+        }
+        function game(){
+            console.log("Let's play a few rounds of \'rock\', \'paper\', \'scissors\'.");
+            var i;
+            for(i = 0; i < 5; i++){
+                playerSelection = prompt("Choose \'rock\', \'paper\' or \'scissors\'.");
+                console.log("You chose " + playerSelection + ".");
+                computerSelection = computerPlay();
+                console.log(playRound(playerSelection, computerSelection));
+            }
+            console.log("Round's over. Are you up for another one?");
+        }
+        game();
+    </script>
+</body>
+</html>
